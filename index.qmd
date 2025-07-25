@@ -1,5 +1,7 @@
 ---
-title: "my_website"
+title: "My Website"
+
+
 ---
 
 This is a Quarto website.

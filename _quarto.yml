@@ -1,17 +1,19 @@
-project:
+project: 
   type: website
-
+  
 website:
   title: "my_website"
   navbar:
     left:
       - href: index.qmd
-        text: Home
-      - about.qmd
-
+        text: home
+      - href: about.qmd
+        text: Second page
 format:
-  html:
-    theme: cosmo
+  html: 
+    theme: 
+      - cosano
+      - brand
     css: styles.css
     toc: true
 
