@@ -1,0 +1,161 @@
+---
+title: "Results Study 1"
+author: "Lina Fricke"
+date: today # the file we be printed with the todays date
+format: 
+  html: # can also be pdf, just write 'pdf' 
+    self-contained: true # now I can send the html-file to someone else, not just a code
+    toc: true # table of content in line 8
+    toc-title: My contents
+    toc-location: left # on the left side of the document
+    theme: 
+      dark: superhero
+      light: minty
+    fontsize: 32 px # de
+    grid:
+      sidebar-width: 300px
+      body-width: 900px
+      margin-width: 300px
+      gutter-width: 1.5rem
+    code-tools: 
+     source: true
+     toggle: false
+     caption: This is my code
+lang: de #german is de, default is english
+citation-location: margin
+execute: # alle Sachen für den Code können auch im code dann selbst festgelegt werden !
+  echo: fenced
+  warning: false
+  messages: false
+  error: true
+code-fold: true # false, wenn es nicht ausgeklappt werden soll
+code-summary: see this specific 
+---
+
+
+::: {.callout-note}
+Es sind noch nicht alle Daten analysiert. Deswegen siehst du hier die vorläufigen Ergebnisse.
+:::
+
+
+# Soziodemografische Daten
+
+
+
+
+
+### Müdigkeit
+
+
+
+### Schmerzen
+
+
+
+
+
+## Other influencing factors
+
+::: {.panel-tabset}
+
+### Sleep
+
+### Playing Computer Games
+
+### Instrument and Sport
+
+### Social Media on Experimental Behavior
+
+
+:::
+
+
+
+# Neuronavigation
+
+Die Kappe wurde mithilfe von Neuronavigation an beiden Tagen an `r nrow(data)` Punkten Fz, Cz, T7, T8 und Pz ausgerichtet. Die Differenz an beiden Tagen wurde mithilfe der Euklidischen Distanz berechnet und ist in @tbl-neuronavigation dargestellt.
+
+```{r neuronavigation berechnung}
+#| include: false
+library(DT)
+library(knitr)
+library(readxl)
+library(dplyr)
+library(plotly)
+
+data = read_excel("/Users/linafricke/Documents/Promotion/Studie 1/06_Data/Neuronavigation/Neuronavigation_IX_korrigiert.xlsx")
+
+# Euklidische Distanz pro Proband berechnen
+df_dist <- data %>%
+  group_by(vp, marker) %>%
+  summarise(
+    dist = sqrt((x[2] - x[1])^2 + (y[2] - y[1])^2 + (z[2] - z[1])^2),
+    .groups = "drop"
+  )
+
+# Gemittelte Distanz über alle Proband*innen pro Marker
+df_mean <- df_dist %>%
+  group_by(marker) %>%
+  summarise(mean_dist = mean(dist))
+
+df_mean <- df_mean %>%
+  arrange(desc(mean_dist)) %>%
+  mutate(marker = factor(marker, levels = marker))
+```
+
+
+```{r code neuronavigation table}
+#| eval: true # code is executed
+#| label: tbl-neuronavigation
+#| tbl-cap: "Durchschnittliche euklidische Distanz"
+
+# datatable(df_mean)
+  
+
+```
+
+
+```{r code neuronavigation table and graph}
+#| eval: true 
+#| tbl-label: tbl-neuronavigation
+#| fig-column: margin
+#| fig-label: fig-neuronavigation
+
+kable(df_mean)
+
+ggplot(df_mean, aes(x = marker, y = mean_dist)) +
+  geom_bar(stat = "identity", fill = "steelblue", color = "black") +
+  labs(x = "Elektrode",
+       y = "Mittlere Distanz (mm)") +
+  theme_minimal()
+```
+
+
+
+
+
+<!-- # Stroop data -->
+
+<!-- The Stroop test was initially invented by Stroop [@rsoft]. -->
+
+<!-- # SRTT data -->
+
+<!-- ## Not-divided into groups -->
+
+<!-- ### Day 1 -->
+
+<!-- ### Day 2 -->
+
+<!-- ## Divided into groups -->
+
+<!-- ### Day 1 -->
+
+<!-- ### Day 2 -->
+
+<!-- ## Memorized sequence -->
+
+
+
+
+
+

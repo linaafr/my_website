@@ -8,6 +8,8 @@ This is a Quarto website.
 
 To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
 
+here you see my [document](my_file.qmd)
+
 ```{r}
 1 + 1
 ```

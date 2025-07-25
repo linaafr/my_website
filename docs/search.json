@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "My Website",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
+    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\nhere you see my document\n\n1 + 1\n\n[1] 2"
   },
   {
     "objectID": "about.html",
@@ -12,5 +12,19 @@
     "title": "About",
     "section": "",
     "text": "About this site\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "my_file.html",
+    "href": "my_file.html",
+    "title": "Results Study 1",
+    "section": "",
+    "text": "Hinweis\n\n\n\nEs sind noch nicht alle Daten analysiert. Deswegen siehst du hier die vorläufigen Ergebnisse."
+  },
+  {
+    "objectID": "my_file.html#other-influencing-factors",
+    "href": "my_file.html#other-influencing-factors",
+    "title": "Results Study 1",
+    "section": "Other influencing factors",
+    "text": "Other influencing factors\n\nSleepPlaying Computer GamesInstrument and SportSocial Media on Experimental Behavior"
   }
 ]
